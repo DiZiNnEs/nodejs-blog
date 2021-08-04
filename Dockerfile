@@ -1,6 +1,6 @@
 FROM node:current-alpine3.11
 
-WORKDIR /usr/src/app
+WORKDIR /node-js-blog
 
 COPY package*.json ./
 RUN yarn install

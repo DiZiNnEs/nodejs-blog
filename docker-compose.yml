@@ -2,11 +2,15 @@ version: "3.9"
 services:
   web:
     build: .
+    volumes:
+    - .:/node-js-blog
     ports:
     - "3000:3000"
-    command: nodemon src/index.ts
+    command: yarn run serve
+    depends_on:
+      - db
   db:
-    image: postgres:13
+    image: postgres:alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
@@ -19,3 +23,6 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - "5432:5432"
+
+volumes:
+  postgres_data:
