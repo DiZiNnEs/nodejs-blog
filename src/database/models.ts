@@ -1,16 +1,10 @@
 const { Pool } = require("pg");
 
-const credentials = {
-  user: "postgres",
-  host: "db",
-  database: "blog",
-  password: "postgres",
-  port: 5432,
-};
+import { DATABASE } from "../config";
 
 
 async function createTables(): Promise<void> {
-  const pool = new Pool(credentials);
+  const pool = new Pool(DATABASE);
   await pool.query(`
       CREATE TABLE IF NOT EXISTS blog_posts(
         id integer PRIMARY KEY NOT NULL,
