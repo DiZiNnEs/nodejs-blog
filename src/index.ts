@@ -1,7 +1,7 @@
 import express from 'express';
 
 import  { Request, Response } from 'express';
-import { main } from "./database/migrations";
+import { main } from "./database/models";
 
 const path = require('path');
 const app = express();
