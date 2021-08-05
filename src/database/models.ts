@@ -3,9 +3,16 @@ const { Pool } = require("pg");
 import { DATABASE } from "../config";
 
 
-async function createTables(): Promise<void> {
-  const pool = new Pool(DATABASE);
-  await pool.query(`
+export class Models {
+  pool: any;
+
+  constructor() {
+    this.pool = new Pool;
+  }
+
+  async createBlogTable(): Promise<void> {
+    const pool = new Pool(DATABASE);
+    await pool.query(`
       CREATE TABLE IF NOT EXISTS blog_posts(
         id integer PRIMARY KEY NOT NULL,
         title VARCHAR(64), 
@@ -13,12 +20,7 @@ async function createTables(): Promise<void> {
         date_time DATE,
         full_text TEXT)
   `);
-  console.log('successfully create tables');
-  await pool.end();
-}
-
-
-export async function main() {
-  await createTables();
-  console.log('successfully the end');
+    console.log('successfully create tables');
+    await pool.end();
+  }
 }
