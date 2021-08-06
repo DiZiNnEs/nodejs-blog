@@ -2,10 +2,11 @@ import express, { Express } from "express";
 
 import { Request, Response } from 'express';
 
-import path from "path";
 import { Queries } from "../database/queries";
 
-import { PORT } from "../config"
+import { PORT } from "../config";
+
+import path from "path";
 
 export class BlogsRoutes {
   app: Express;
@@ -15,20 +16,18 @@ export class BlogsRoutes {
     this.app = express()
     this.queries = queries;
 
-    this.app.listen(PORT, () => console.log(`Application has been started on port: ${PORT}`))
+    this.app.listen(PORT, () => console.log(`Application has been started on port: ${PORT} | http://localhost:${PORT}/`))
   }
 
-  index() {
+  index(): express.Express {
     return this.app.get('/', (req: Request, res: Response) => {
       res.sendFile(path.join(__dirname, '../templates/index.html'));
     })
   }
 
-  blogs() {
+  blogs(): express.Express {
     return this.app.get('/blogs', async (req: Request, res: Response) => {
       res.send(await this.queries.getPosts())
     })
   }
-
-
 }
