@@ -13,3 +13,5 @@ export const DATABASE: IDatabase = {
   password: "postgres",
   port: 5432,
 };
+
+export const PORT = 3000;
