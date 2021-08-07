@@ -6,8 +6,6 @@ import { Queries } from "../database/queries";
 
 import { PORT } from "../config";
 
-import path from "path";
-
 export class BlogsRoutes {
   app: Express;
   queries: Queries;
@@ -16,12 +14,14 @@ export class BlogsRoutes {
     this.app = express()
     this.queries = queries;
 
-    this.app.listen(PORT, () => console.log(`Application has been started on port: ${PORT} | http://localhost:${PORT}/`))
+    this.app.set('views', './src/views');
+    this.app.set('view engine', 'pug');
+    this.app.listen(PORT, () => console.log(`Application has been started on port: ${PORT} | http://localhost:${PORT}/`));
   }
 
   index(): express.Express {
     return this.app.get('/', (req: Request, res: Response) => {
-      res.sendFile(path.join(__dirname, '../templates/index.html'));
+      res.render('index', {title: 'Hey', message: 'Hello World'});
     })
   }
 
