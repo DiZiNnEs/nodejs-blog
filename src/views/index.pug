@@ -1,5 +1,12 @@
+doctype html
+html(lang='en')
 html
   head
-    title= title
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous", rel='stylesheet')
+    title= 'Home Page'
   body
-    h1= message
+    main(role="main" class="container")
+      div.jumbotron
+        h1 Navbar example
+        p.lead This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this
+        a(class='btn btn-lg btn-primary') View navbar docs
