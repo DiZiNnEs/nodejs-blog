@@ -21,7 +21,7 @@ class Index {
 
   async runBlogsRoutes(): Promise<void> {
     await this.blogs.index();
-    await this.blogs.blogs();
+    await this.blogs.blog();
   }
 }
 const index = new Index()
