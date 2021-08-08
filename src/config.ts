@@ -1,3 +1,5 @@
+import express from "express";
+
 export interface IDatabase {
   user: string,
   host: string,
@@ -15,3 +17,9 @@ export const DATABASE: IDatabase = {
 };
 
 export const PORT = 3000;
+
+
+
+export const APP = express()
+APP.set('views', './src/views');
+APP.set('view engine', 'pug');
