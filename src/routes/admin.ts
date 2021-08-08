@@ -10,7 +10,7 @@ export class Admin{
     this.queries = queries;
   }
 
-  addPosts(): express.Express {
+  adminPanel(): express.Express {
     return APP.get('/admin/', async (req: Request, res: Response) => {
       const context = {};
       res.render('admin/main', context)
