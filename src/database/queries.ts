@@ -8,8 +8,13 @@ export class Queries {
     this.pool = new Pool(DATABASE)
   }
 
-  async getPosts(): Promise<any> {
+  async getPosts(): Promise<string> {
     const query = 'SELECT t.* FROM public.blog_posts t';
     return this.pool.query(query)
+  }
+
+  async getPost(id: number): Promise<string> {
+    const query = `SELECT id, title, author, date_time, full_text FROM blog.public.blog_posts WHERE id=${id}`;
+    return await this.pool.query(query)
   }
 }

@@ -27,8 +27,13 @@ export class BlogsRoutes {
   }
 
   blogs(): express.Express {
-    return this.app.get('/blogs', async (req: Request, res: Response) => {
-      res.send(await this.queries.getPosts())
+    return this.app.get(`/read/:id/`, async (req: Request, res: Response) => {
+      const id: number = Number(req.params.id)
+      const context = {
+        id: id,
+        blog: await this.queries.getPost(id)
+      }
+      res.render('detail', context)
     })
   }
 }
