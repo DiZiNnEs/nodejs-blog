@@ -16,4 +16,11 @@ export class Admin{
       res.render('admin/main', context)
     })
   }
+
+  addPosts(): express.Express {
+    return APP.get('/admin/add-posts/', async (req: Request, res: Response) => {
+      const context = {};
+      res.render('admin/main', context)
+    })
+  }
 }
