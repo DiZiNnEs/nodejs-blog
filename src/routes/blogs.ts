@@ -20,8 +20,9 @@ export class BlogsRoutes {
   }
 
   index(): express.Express {
-    return this.app.get('/', (req: Request, res: Response) => {
-      res.render('index', {title: 'Hey', message: 'Hello World'});
+    return this.app.get('/', async (req: Request, res: Response) => {
+      const context = { blogs: await this.queries.getPosts() }
+      res.render('index', context);
     })
   }
 
