@@ -15,7 +15,7 @@ class Index {
     this.queries = new Queries;
     this.models = new Models;
     this.blogs = new BlogsRoutes(this.queries);
-    this.admin = new Admin();
+    this.admin = new Admin(this.queries);
   }
 
   async runDB(): Promise<void> {
@@ -28,7 +28,7 @@ class Index {
   }
 
   async runAdmin(): Promise<void> {
-    await this.admin.admin()
+    await this.admin.addPosts()
   }
 }
 const index = new Index()

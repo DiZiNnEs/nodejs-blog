@@ -1,0 +1,19 @@
+import express from "express";
+import { Request, Response } from "express/ts4.0";
+import { APP } from "../config";
+import { Queries } from "../database/queries";
+
+export class Admin{
+  queries: Queries;
+
+  constructor(queries: Queries) {
+    this.queries = queries;
+  }
+
+  addPosts(): express.Express {
+    return APP.get('/admin/', async (req: Request, res: Response) => {
+      const context = {};
+      res.render('admin/main', context)
+    })
+  }
+}
