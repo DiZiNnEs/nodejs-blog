@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+html
+    head
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous", rel='stylesheet')
+        title= 'Add post'
+    body
+        h1 Welcome to the club Boddy
+        form(method='POST' action='/admin/add-posts/')
+            input(type='text' name='title')
+            input(type='text' name='author')
+            textarea(name='full_text')
+            input(type='submit')

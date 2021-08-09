@@ -19,7 +19,7 @@ class Index {
   }
 
   async runDB(): Promise<void> {
-    await this.models.createBlogTable()
+    await this.models.createBlogTable();
   }
 
   async runBlogsRoutes(): Promise<void> {
@@ -28,13 +28,15 @@ class Index {
   }
 
   async runAdmin(): Promise<void> {
-    await this.admin.adminPanel()
+    await this.admin.adminPanel();
+    await this.admin.addPostsGET();
+    await this.admin.addPostsPOST();
   }
 }
 const index = new Index()
 
-index.runDB()
-index.runBlogsRoutes()
-index.runAdmin()
+index.runDB();
+index.runBlogsRoutes();
+index.runAdmin();
 
-APP.listen(PORT, () => console.log(`App has been started on port: ${PORT} | http://localhost:${PORT}`))
+APP.listen(PORT, () => console.log(`App has been started on port: ${PORT} | http://localhost:${PORT}`));
