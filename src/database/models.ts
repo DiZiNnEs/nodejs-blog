@@ -14,7 +14,7 @@ export class Models {
     const pool = new Pool(DATABASE);
     await pool.query(`
       CREATE TABLE IF NOT EXISTS blog_posts(
-        id integer PRIMARY KEY NOT NULL,
+        id SERIAL PRIMARY KEY NOT NULL,
         title VARCHAR(64), 
         author VARCHAR(64), 
         date_time DATE,
