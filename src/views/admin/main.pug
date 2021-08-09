@@ -5,4 +5,19 @@ html
         link(href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous", rel='stylesheet')
         title= 'Admin panel'
     body
-        h1 Welcome to the club Boddy
+        header
+            div(class="navbar navbar-dark bg-dark box-shadow")
+                div(class="container d-flex justify-content-between")
+                    a(href="#" class="navbar-brand d-flex align-items-center")
+                    strong Admin panel
+                    button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation")
+                    span(class="navbar-toggler-icon")
+
+        main(role='main')
+            section(class="jumbotron text-center")
+                div(class="container")
+                h1(class="jumbotron-heading") Album example
+                p(class="lead text-muted") Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely
+                p
+                a(href="/admin/add-posts/" class="btn btn-primary my-2") Add post
+                a(href="#" class="btn btn-secondary my-2") Title
