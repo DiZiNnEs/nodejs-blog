@@ -1,5 +1,7 @@
 import express from "express";
 
+const bodyParser = require('body-parser');
+
 export interface IDatabase {
   user: string,
   host: string,
@@ -21,5 +23,9 @@ export const PORT = 3000;
 
 
 export const APP = express()
+
+APP.use(bodyParser.urlencoded({ extended: false }))
+APP.use(bodyParser.json())
+
 APP.set('views', './src/views');
 APP.set('view engine', 'pug');
