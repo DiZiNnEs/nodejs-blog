@@ -22,7 +22,7 @@ export class Queries {
 
   async addPost(data: Blog): Promise<void> {
     const query = `INSERT INTO blog.public.blog_posts (title, author, date_time, full_text)
-                   VALUES ('${data.title}', '${data.author}, '${data.date_time}', '${data.full_text}' ')`;
+                   VALUES ('${data.title}', '${data.author}', 'now()', '${data.full_text}')`;
     await this.pool.query(query)
       .then(() => console.log('all the good'))
       .catch((err: Error) => console.log('ERROR', err))
