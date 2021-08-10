@@ -29,9 +29,12 @@ class Index {
 
   async runAdmin(): Promise<void> {
     await this.admin.adminPanel();
+
     await this.admin.addPostsGET();
     await this.admin.addPostsPOST();
+
     await this.admin.editPostGET();
+    await this.admin.editPostPOST();
   }
 }
 const index = new Index()

@@ -30,6 +30,7 @@ export class Admin{
     return APP.post('/admin/add-posts/', async (req: Request, res: Response) => {
 
       const data: Blog = {
+        id: undefined,
         title: req.body.title,
         author: req.body.author,
         full_text: req.body.full_text,
@@ -48,6 +49,23 @@ export class Admin{
         post: await this.queries.getPost(id)
       }
       res.render('admin/edit-post', context)
+    })
+  }
+
+  editPostPOST(): express.Express {
+    return APP.post('/admin/edit-post/:id/', async (req: Request, res: Response) => {
+      const id: number = Number(req.params.id)
+      const data: Blog = {
+        id: id,
+        title: req.body.title,
+        author: req.body.author,
+        full_text: req.body.full_text,
+        date_time: Date.now()
+      };
+      await this.queries.updatePost(data);
+
+      const context = { blogs: await this.queries.getPosts() }
+      res.render('admin/main', context)
     })
   }
 
