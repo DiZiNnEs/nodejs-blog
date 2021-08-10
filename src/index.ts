@@ -31,6 +31,7 @@ class Index {
     await this.admin.adminPanel();
     await this.admin.addPostsGET();
     await this.admin.addPostsPOST();
+    await this.admin.editPostGET();
   }
 }
 const index = new Index()

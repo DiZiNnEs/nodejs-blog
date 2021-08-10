@@ -40,4 +40,15 @@ export class Admin{
       res.render('admin/add-posts')
     })
   }
+
+  editPostGET(): express.Express {
+    return APP.get('/admin/edit-post/:id/', async (req: Request, res: Response) => {
+      const id: number = Number(req.params.id)
+      const context = {
+        post: await this.queries.getPost(id)
+      }
+      res.render('admin/edit-post', context)
+    })
+  }
+
 }
