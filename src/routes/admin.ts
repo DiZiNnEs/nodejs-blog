@@ -13,7 +13,7 @@ export class Admin{
 
   adminPanel(): express.Express {
     return APP.get('/admin/', async (req: Request, res: Response) => {
-      const context = {};
+      const context = { blogs: await this.queries.getPosts() }
       res.render('admin/main', context)
     })
   }
@@ -22,7 +22,7 @@ export class Admin{
     return APP.get('/admin/add-posts/', async (req: Request, res: Response) => {
       console.log('GET');
       const context = {};
-      res.render('admin/add-posts', context)
+      res.render('admin/add-post', context)
     })
   }
 
@@ -40,5 +40,4 @@ export class Admin{
       res.render('admin/add-posts')
     })
   }
-
 }
