@@ -38,7 +38,9 @@ export class Admin{
       };
       console.log(data);
       await this.queries.addPost(data);
-      res.render('admin/add-posts')
+
+      const context = { blogs: await this.queries.getPosts() }
+      res.render('admin/main', context)
     })
   }
 
