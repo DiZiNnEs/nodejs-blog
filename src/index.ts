@@ -35,6 +35,8 @@ class Index {
 
     await this.admin.editPostGET();
     await this.admin.editPostPOST();
+
+    await this.admin.deletePost();
   }
 }
 const index = new Index()

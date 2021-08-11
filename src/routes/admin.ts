@@ -69,4 +69,13 @@ export class Admin{
     })
   }
 
+  deletePost(): express.Express {
+    return APP.get('/admin/delete-post/:id/', async (req: Request, res: Response) => {
+      const id: number = Number(req.params.id)
+      await this.queries.deletePost(id)
+
+      const context = { blogs: await this.queries.getPosts() }
+      res.render('admin/main', context)
+    })
+  }
 }

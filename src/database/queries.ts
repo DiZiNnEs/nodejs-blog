@@ -29,13 +29,20 @@ export class Queries {
   }
 
   async updatePost(data: Blog): Promise<void> {
-    console.log(data)
     const query = `UPDATE public.blog_posts 
                    SET title = '${data.title}',
                        author = '${data.author}',
                        date_time = 'now()',
                        full_text = '${data.full_text}'
                    WHERE public.blog_posts.id = ${data.id}`;
+    await this.pool.query(query)
+      .then(() => console.log('all the good'))
+      .catch((err: Error) => console.log('ERROR', err))
+  }
+
+  async deletePost(id: Number): Promise<void> {
+    const query = `DELETE FROM public.blog_posts
+                   WHERE id = ${id}`
     await this.pool.query(query)
       .then(() => console.log('all the good'))
       .catch((err: Error) => console.log('ERROR', err))
