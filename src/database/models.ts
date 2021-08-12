@@ -17,7 +17,10 @@ export class Models {
             username VARCHAR(128),
             password VARCHAR(256),
             email VARCHAR(32)
-        )
+        );
+
+        INSERT INTO public.users (username, password, email)
+        VALUES ('dizi', '12345', 'dizinnes228@gmail.com')
     `;
     await this.pool.query(query)
       .then(() => console.log('successfully create USER table'))
