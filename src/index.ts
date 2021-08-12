@@ -19,6 +19,7 @@ class Index {
   }
 
   async runDB(): Promise<void> {
+    await this.models.createUserModel()
     await this.models.createBlogTable();
   }
 
